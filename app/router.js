@@ -19,8 +19,8 @@ router.get('/types/:id', pokemonController.oneType);
 router.get('/pokedex', pokemonController.renderPokedex);
 
 // Favoris
-router.get('/pokedex/add/:numero', pokemonController.addPokemon);
-router.get('/pokedex/remove/:numero', pokemonController.removePokemon);
+router.get('/pokedex/add/:id', pokemonController.addPokemon);
+router.get('/pokedex/remove/:id', pokemonController.removePokemon);
 
 router.use(mainController.notFound);
 

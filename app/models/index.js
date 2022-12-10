@@ -6,12 +6,12 @@ const Type = require('./Type');
 Pokemon.belongsToMany(Type, {
   through: 'pokemon_type',
   as: 'types',
-  foreignKey: 'type_id'
+  foreignKey: 'pokemon_numero'
 });
 Type.belongsToMany(Pokemon, {
   through: 'pokemon_type',
   as: 'pokemons',
-  foreignKey: 'pokemon_numero'
+  foreignKey: 'type_id'
 });
 
 module.exports = { Pokemon, Type };

@@ -66,12 +66,14 @@ const pokemonController = {
   // Affichage de la page "/types/:id"
   oneType: async (req, res, next) => {
     const idType = parseInt(req.params.id, 10);
+    console.log(idType);
     try {
       const type = await Type.findByPk(idType, {
         include: {
           association: 'pokemons',
-          where: { id: idType }
+          through: { where: { type_id: idType }}
         }
+
       });
       console.log('type',JSON.stringify(type, null ,2));
 
@@ -116,7 +118,7 @@ const pokemonController = {
   },
   addPokemon: async (req, res, next) => {
     // Ajout d'un Pokemon au Pokedex
-    const pokeId = Number(req.params.numero); // ID du pokemon à ajouter
+    const pokeId = Number(req.params.id); // ID du pokemon à ajouter
 
     try {
       // Rechercher le Pokemon à ajouter (avec l'id)
@@ -150,10 +152,10 @@ const pokemonController = {
   },
   removePokemon: (req, res) => {
     // Suppression d'un Pokemon du Pokedex
-    const pokeId = parseInt(req.params.numero, 10); // ID du pokemon à supprimer
+    const pokeId = parseInt(req.params.id, 10); // ID du pokemon à supprimer
 
     // Filtrer la session : j'enleve le Pokemon de la session "selectedPokemonIds"
-    const pokedex = req.session.selectedPokemonIds.filter(pokemon => !(pokemon.numero === pokeId));
+    const pokedex = req.session.selectedPokemonIds.filter(pokemon => !(pokemon.id === pokeId));
     req.session.selectedPokemonIds = pokedex; // Et je réaffecte la nouvelle valeur du Pokedex à la session
 
     // Je redirige vers la page du Pokemon
