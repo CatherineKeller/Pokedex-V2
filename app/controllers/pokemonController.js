@@ -173,7 +173,7 @@ const pokemonController = {
         const searchedPokemons = await Pokemon.findAll({
           where: {
             nom: {
-              [Op.iLike]: searchedTerm
+              [Op.iLike]: `%${searchedTerm}%`
             }
           }
         });
