@@ -147,6 +147,7 @@ header nav a {
   box-sizing: border-box;
 }
 .pokemon-detail__content {
+  width: 40%;
   background-color: #555555;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
@@ -158,14 +159,13 @@ header nav a {
 .pokemon-detail__content h2 {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
-.stats {
-  width: 500px;
-}
+
 .stats-line {
   background-color: rgba(255,255,255,.8) ;
   border-radius: 5px;
-  width: 300px;
+  width: 50%;
   height: 25px;
 }
 .stats-line span {
